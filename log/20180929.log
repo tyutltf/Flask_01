@@ -1,0 +1,4 @@
+2018-09-29 17:06:14,246 - mainlogger - ERROR - 执行SQL：select * from t_job where jobname='%s' params：python工程师
+2018-09-29 17:06:14,246 - mainlogger - ERROR - 执行SQL：select * from t_job where jobname='%s' 出现异常，params:execute() first
+2018-09-29 17:07:16,004 - mainlogger - ERROR - 执行SQL：select * from t_job where jobname='%s' params：('python工程师',)
+2018-09-29 17:07:16,005 - mainlogger - ERROR - 执行SQL：select * from t_job where jobname='%s' 出现异常，params:execute() first

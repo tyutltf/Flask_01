@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>随机照片</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h3>welcome, {{ session.get("userName") }} 访问</h3>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" ><a href="/">主界面</a></li>
+        <li role="presentation"><a href="/gojob">工作</a></li>
+        <li role="presentation"><a href="/gomovie">影评</a></li>
+        <li role="presentation"><a href="/gophoto">图片</a></li>
+        <li role="presentation"><a href="/gopic">随机图片</a></li>
+        <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+        <li role="presentation"><a href="/gomap">地图展示</a></li>
+        <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+    </ul>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                图片采集系统
+                </div>
+            <div class="panel-footer"><a href="/pic1">图片采集</a></div>
+            <div class="panel-footer"><a href="/pic2">图片展示</a></div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <img src="../static/img/236865.jpg" class="img-responsive" alt="Responsive image">
+        </div>
+    </div>
+</body>
+</html>

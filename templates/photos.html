@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>欢迎浏览美照</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/home.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<h3>welcome, {{ session.get("userName") }} 访问</h3>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" ><a href="/">主界面</a></li>
+  <li role="presentation"><a href="/gojob">工作</a></li>
+  <li role="presentation"><a href="/gomovie">影评</a></li>
+  <li role="presentation"><a href="/gophoto">图片</a></li>
+  <li role="presentation"><a href="/gopic">随机图片</a></li>
+  <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+    <li role="presentation"><a href="/gomap">地图展示</a></li>
+    <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+    <li role="presentation"><a href="/zaxiang">杂项</a></li>
+</ul>
+
+<div class="row">
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <a href="/gohuge" class="thumbnail">
+      <img src="../static/img/untitled.png" alt="胡歌">
+      </a>
+      <div class="caption">
+        <h3>最爱-胡歌</h3>
+        <p>哈哈哈哈哈，胡歌超可爱</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <a href="/goreba" class="thumbnail">
+      <img src="../static/img/71dbcb4755.jpg" alt="迪丽热巴" style="height: 427.13px;">
+      </a>
+      <div class="caption">
+        <h3>当红花旦-迪丽热巴</h3>
+        <p>哈哈哈哈哈，迪丽热巴超可爱</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <a href="/gowjk" class="thumbnail">
+      <img src="../static/img/88da3ee39b.jpg" alt="王俊凯">
+      </a>
+      <div class="caption">
+        <h3>TFBoys-王俊凯</h3>
+        <p>哈哈哈哈哈，王俊凯超可爱</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <a href="/goluhan" class="thumbnail">
+      <img src="../static/img/untitled3.png" alt="鹿晗">
+      </a>
+      <div class="caption">
+        <h3>流量巨星-鹿晗</h3>
+        <p>哈哈哈哈哈，鹿晗超可爱</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

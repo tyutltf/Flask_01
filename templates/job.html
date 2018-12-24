@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>工作分析</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/home.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<h3>welcome, {{ session.get("userName") }} 访问</h3>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" ><a href="/">主界面</a></li>
+  <li role="presentation"><a href="/gojob">工作</a></li>
+  <li role="presentation"><a href="/gomovie">影评</a></li>
+  <li role="presentation"><a href="/gophoto">图片</a></li>
+  <li role="presentation"><a href="/gopic">随机图片</a></li>
+  <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+    <li role="presentation"><a href="/gomap">地图展示</a></li>
+    <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+    <li role="presentation"><a href="/zaxiang">杂项</a></li>
+</ul>
+
+<h3 class="center">工作展示界面</h3>
+<div class="row">
+  <div class="col-md-2">
+      <form action="/goposition" method="post">
+      <p>请输入你要查询的职位名:</p>
+      <div class="input-group">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">查询</button>
+        </span>
+        <input type="text" class="form-control" name="position" placeholder="职位名...">
+      </div>
+      </form>
+      <form action="/gocompany" method="post">
+      <p>请输入你要查询的公司名:</p>
+      <div class="input-group">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">查询</button>
+        </span>
+        <input type="text" class="form-control" name="jobcompany" placeholder="公司名...">
+      </div>
+      </form>
+      <form action="/gojobarea" method="post">
+      <p>请输入你要查询的地区:</p>
+      <div class="input-group">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">查询</button>
+        </span>
+        <input type="text" class="form-control" name="jobarea" placeholder="地区...">
+      </div>
+      </form>
+  </div>
+  <div class="col-md-8 col-md-offset-1">
+      <table border="1" class="table">
+        <tr>
+            <td>ID</td><td>职位名</td><td>公司名</td><td>工作地点</td><td>薪资</td><td>发布日期</td>
+        </tr>
+        {% for job in index_list %}
+        <tr>
+            <td>{{ job[0] }}</td>
+            <td>{{ job[1] }}</td>
+            <td>{{ job[2] }}</td>
+            <td>{{ job[3] }}</td>
+            <td>{{ job[4] }}</td>
+            <td>{{ job[5] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+  </div>
+
+  <nav aria-label="Page navigation" class="pull-right" style="margin-right: 325px">
+    <ul class="pagination">
+        {{ html|safe }}
+    </ul>
+  </nav>
+</div>
+
+</body>
+</html>

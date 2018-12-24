@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>浏览我的网站</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/home.css" rel="stylesheet" />
+    <script type="text/javascript">
+        // 防呆设计
+        function del_submit(userId){
+            if(confirm("确定要删除用户么?")){
+                document.location.href = "/delete?userId="+ userId
+            }
+        }
+    </script>
+
+    <style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style-type: none;
+			}
+
+			a,
+			img {
+				border: 0;
+			}
+			/* flexslider */
+
+			.flexslider {
+				position: relative;
+				height: 500px;
+				overflow: hidden;
+				background: url(../static/quanpinglunbo/images/loading.gif) 50% no-repeat;
+			}
+
+			.slides {
+				position: relative;
+				z-index: 1;
+			}
+
+			.slides li {
+				height: 500px;
+			}
+
+			.flex-control-nav {
+				position: absolute;
+				bottom: 10px;
+				z-index: 2;
+				width: 100%;
+				text-align: center;
+			}
+
+			.flex-control-nav li {
+				display: inline-block;
+				width: 14px;
+				height: 14px;
+				margin: 0 5px;
+				*display: inline;
+				zoom: 1;
+			}
+
+			.flex-control-nav a {
+				display: inline-block;
+				width: 14px;
+				height: 14px;
+				line-height: 40px;
+				overflow: hidden;
+				background: url(../static/quanpinglunbo/images/dot.png) right 0 no-repeat;
+				cursor: pointer;
+			}
+
+			.flex-control-nav .flex-active {
+				background-position: 0 0;
+			}
+
+			.flex-direction-nav {
+				position: absolute;
+				z-index: 3;
+				width: 100%;
+				top: 45%;
+			}
+
+			.flex-direction-nav li a {
+				display: block;
+				width: 50px;
+				height: 50px;
+				overflow: hidden;
+				cursor: pointer;
+				position: absolute;
+			}
+
+			.flex-direction-nav li a.flex-prev {
+				left: 40px;
+				background: url(../static/quanpinglunbo/images/prev.png) center center no-repeat;
+			}
+
+			.flex-direction-nav li a.flex-next {
+				right: 40px;
+				background: url(../static/quanpinglunbo/images/next.png) center center no-repeat;
+			}
+		</style>
+</head>
+<body>
+
+<h3>welcome, {{ session.get("userName") }} 访问
+    {{ message }}</h3>
+
+<ul class="nav nav-tabs">
+  <li role="presentation"><a href="/">主界面</a></li>
+  <li role="presentation"><a href="/gojob">工作</a></li>
+  <li role="presentation"><a href="/gomovie">影评</a></li>
+  <li role="presentation"><a href="/gophoto">图片</a></li>
+  <li role="presentation"><a href="/gopic">随机图片</a></li>
+  <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+    <li role="presentation"><a href="/gomap">地图展示</a></li>
+    <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+    <li role="presentation"><a href="/zaxiang">杂项</a></li>
+</ul>
+
+<script src="/demos/googlegg.js"></script>
+		<div class="flexslider">
+			<ul class="slides">
+				<li style="background:url(../static/quanpinglunbo/images/img6.jpg) 50% 25% no-repeat;"></li>
+				<li style="background:url(../static/quanpinglunbo/images/img7.jpg) 50% 25% no-repeat;"></li>
+				<li style="background:url(../static/quanpinglunbo/images/img8.jpg) 50% 25% no-repeat;"></li>
+				<li style="background:url(../static/quanpinglunbo/images/img9.jpg) 50% 25% no-repeat;"></li>
+				<li style="background:url(../static/quanpinglunbo/images/img10.jpg) 50% 25% no-repeat;"></li>
+			</ul>
+		</div>
+
+		<script src="../static/quanpinglunbo/js/jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../static/quanpinglunbo/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.flexslider').flexslider({
+					directionNav: true,
+					pauseOnAction: false
+				});
+			});
+		</script>
+<!--
+<div class="body_beijing" >
+    <img src="../static/17900551_1359684346722.jpg" style="width: 1310px;height: 650px">
+</div>-->
+<h3 class="center">数据库界面</h3>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+      <table border="1" class="table">
+        <tr>
+            <td>用户ID</td><td>用户名</td><td>密码</td><td>年龄</td><td>余额</td><td>操作</td>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user[1] }}</td><td>{{ user[2] }}</td><td>{{ user[3] }}</td><td>{{ user[4] }}</td><td>{{ user[5] }}</td> <td><a href="javascript:del_submit({{ user[1] }});">删除</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+  </div>
+</div>
+
+
+</body>
+</html>

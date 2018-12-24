@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>真实数据</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="../static/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.js"></script>
+    <script type="text/javascript" src="../static/js/china.js"></script>
+</head>
+<body>
+    <h3>welcome, {{ session.get("userName") }} 访问
+    {{ message }}</h3>
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><a href="/">主界面</a></li>
+      <li role="presentation"><a href="/gojob">工作</a></li>
+      <li role="presentation"><a href="/gomovie">影评</a></li>
+      <li role="presentation"><a href="/gophoto">图片</a></li>
+      <li role="presentation"><a href="/gopic">随机图片</a></li>
+      <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+        <li role="presentation"><a href="/gomap">地图展示</a></li>
+        <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+        <li role="presentation"><a href="/zaxiang">杂项</a></li>
+    </ul>
+
+    <div id="python" style="width:600px; height: 450px;"></div>
+    <script type="text/javascript">
+        var myCharts = echarts.init(document.getElementById("python"));
+            // 指定图表的配置项和数据
+            var option = {
+                title : {
+                text: '北京Python月薪',
+                subtext: '来源51job网',
+                x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                color:['#3399CC','#666633', '#99FF66','#FFFF99', '#990066','#FF99FF','#330033','#006633'],
+                backgroundColor: '#FFFFFF',
+                series : [
+                    {
+                        name: '月薪',
+                        type: 'pie',
+                        radius: '55%',
+                        data:[
+                            {value:56, name:'0-5000'},
+                            {value:596, name:'5000-10000'},
+                            {value:1458, name:'10000-15000'},
+                            {value:970, name:'15000-20000'},
+                            {value:670, name:'20000-25000'},
+                            {value:582, name:'25000-30000'},
+                            {value:142, name:'30000-35000'},
+                            {value:156, name:'35000-40000'}
+                        ],
+                    }
+                ]
+            }
+            // 使用刚指定的配置项和数据显示图表
+            myCharts.setOption(option);
+    </script>
+    <div id="java" style="width:600px; height: 450px;margin-top: -450px;margin-left: 600px"></div>
+    <script type="text/javascript">
+        var myCharts = echarts.init(document.getElementById("java"));
+            // 指定图表的配置项和数据
+            var option = {
+                title : {
+                text: 'Java月薪',
+                subtext: '来源51job网',
+                x:'center'
+                },
+                tooltip : {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                color:['#FFFF99', '#990066','#3399CC','#666633', '#99FF66','#FF99FF','#330033'],
+                backgroundColor: '#FFFFFF',
+                series : [
+                    {
+                        name: '月薪',
+                        type: 'pie',
+                        radius: '55%',
+                        data:[
+                            {value:188, name:'0-5000'},
+                            {value:1829, name:'5000-10000'},
+                            {value:1949, name:'10000-15000'},
+                            {value:891, name:'15000-20000'},
+                            {value:397, name:'20000-25000'},
+                            {value:146, name:'25000-30000'},
+                            {value:36, name:'30000-35000'},
+                            {value:9, name:'35000-40000'}
+                        ],
+                    }
+                ]
+            }
+            // 使用刚指定的配置项和数据显示图表
+            myCharts.setOption(option);
+    </script>
+    <div id="cplus" style="width:600px; height: 450px;"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'C++月薪'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:["0","5000","10000","15000","20000","25000","30000","35000"]
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'月薪',
+                type:'bar',
+                data:[169,1833,2213,866,367,112,34,16],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#FFFF99', '#009966','#990066','#3399CC','#666633', '#99FF66','#FF99FF','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('cplus'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="php" style="width:600px; height: 450px;margin-left: 600px;margin-top: -450px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'PHP月薪'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:["0","5000","10000","15000","20000","25000","30000","35000"]
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'月薪',
+                type:'bar',
+                data:[322,2962,1883,645,235,68,17,9],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('php'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="yibiaopan" style="width:1200px; height: 400px;"></div>
+    <script type="text/javascript">
+         //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('yibiaopan'));
+        option = {
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['Python','Java','C++','PHP','Web']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : ['北京','上海','广东','深圳','西安','成都','大连']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'Python',
+                    type:'line',
+                    stack: '总量',
+                    data:[12500, 13200, 11200, 13400, 9000, 9500, 9900]
+                },
+                {
+                    name:'Java',
+                    type:'line',
+                    stack: '数量',
+                    data:[10000, 8900, 9000, 8500, 8000, 8300, 9310]
+                },
+                {
+                    name:'C++',
+                    type:'line',
+                    stack: '总量',
+                    data:[9900, 11000, 10000, 9000, 9000, 8500, 10000]
+                },
+                {
+                    name:'PHP',
+                    type:'line',
+                    stack: '总量',
+                    data:[8000, 7500, 8500, 7000, 7000, 7000, 6500]
+                },
+                {
+                    name:'Web',
+                    type:'line',
+                    stack: '总量',
+                    data:[11520, 9932, 9900, 9434, 7500, 8000, 9200]
+                }
+            ]
+        };
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="beijingarea" style="width:1200px; height: 450px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'北京各区Python职位数量'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:['北京','异地招聘','海淀区','朝阳区','丰台区','昌平区','东城区','延庆区',
+              '房山区','通州区','顺义区','大兴区','怀柔区','西城区','平谷区','门头沟区']
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'职位数量',
+                type:'bar',
+                data:[1395,177,1611,1004,132,146,126,2,21,21,20,116,0,162,0,3],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033',
+                            '#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('beijingarea'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="exp" style="width:600px; height: 450px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'工作经验'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:['应届生','1年以内','1-3年','3-5年','5-10年','经验不限']
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'工作经验',
+                type:'bar',
+                data:[42,129,838,1013,169,338],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033',
+                            '#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('exp'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="edu" style="width:600px; height: 450px;margin-left: 600px;margin-top: -450px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'学历要求'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:['大专','本科','硕士','博士','学历不限']
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'学历',
+                type:'bar',
+                data:[390,1948,143,4,44],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#FFFF99', '#009966','#990066','#330033', '#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('edu'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+
+    <div id="human" style="width:600px; height: 450px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'公司人数'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:['0-20人','20-99人','100-499人','500-999人','1000-9999人','10000人以上']
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'人数',
+                type:'bar',
+                data:[292,757,659,187,279,355],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#990066','#330033', '#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('human'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+
+    <div id="rongzi" style="width:600px; height: 450px;margin-left: 600px;margin-top: -450px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'融资类型'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:['A轮','B轮','C轮','D轮及以上','天使轮','已上市','其他']
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'类型',
+                type:'bar',
+                data:[352,229,86,90,228,405,1139],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['#3399CC','#666633', '#99FF66','#FF99FF','#FFFF99', '#009966','#990066','#330033'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('rongzi'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

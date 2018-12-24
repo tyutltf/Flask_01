@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>豆瓣影评</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../static/home.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<h3>welcome, {{ session.get("userName") }} 访问</h3>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" ><a href="/">主界面</a></li>
+  <li role="presentation"><a href="/gojob">工作</a></li>
+  <li role="presentation"><a href="/gomovie">影评</a></li>
+  <li role="presentation"><a href="/gophoto">图片</a></li>
+  <li role="presentation"><a href="/gopic">随机图片</a></li>
+  <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+    <li role="presentation"><a href="/gomap">地图展示</a></li>
+    <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+    <li role="presentation"><a href="/zaxiang">杂项</a></li>
+</ul>
+
+<h3 class="center">影评展示界面</h3>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+      <table border="1" class="table">
+        <tr>
+            <td>ID</td><td>电影排名</td><td>电影名称</td><td>电影短评</td><td>评价分数</td><td>评价人数</td>
+        </tr>
+        {% for movie in index_list %}
+        <tr>
+            <td>{{ movie[0] }}</td><td>{{ movie[1] }}</td><td>{{ movie[2] }}</td><td>{{ movie[3] }}</td><td>{{ movie[4] }}</td> <td>{{ movie[5] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+  </div>
+
+  <nav aria-label="Page navigation" class="pull-right" style="margin-right: 325px">
+    <ul class="pagination">
+        {{ html|safe }}
+    </ul>
+  </nav>
+</div>
+
+</body>
+</html>

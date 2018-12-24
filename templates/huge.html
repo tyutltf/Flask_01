@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>欢迎浏览美照</title>
+  <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body{
+			height:100%;
+		}
+		.wrap{
+			width:90%;
+			height:100%;
+			border:1px solid #000;
+			left:5%;
+			top:5%;
+			position:absolute;
+            margin-top: 100px;
+		}
+		.wrap div{
+			width:125px;
+			height:125px;
+			position:absolute;
+			box-shadow:0px 0px 20px #e806b5;
+			cursor:pointer;
+			transition:1s
+		}
+	</style>
+
+ </head>
+
+ <body>
+    <h3>welcome, {{ session.get("userName") }} 访问</h3>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" ><a href="/">主界面</a></li>
+        <li role="presentation"><a href="/gojob">工作</a></li>
+        <li role="presentation"><a href="/gomovie">影评</a></li>
+        <li role="presentation"><a href="/gophoto">图片</a></li>
+        <li role="presentation"><a href="/gopic">随机图片</a></li>
+        <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+        <li role="presentation"><a href="/gomap">地图展示</a></li>
+        <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+        <li role="presentation"><a href="/zaxiang">杂项</a></li>
+    </ul>
+
+	<div class="wrap small"></div>
+	<script type="text/javascript" src="../static/photo/js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			initImg();
+			initPosition();
+
+
+			$(".wrap>div").click(function(){
+				if($(".wrap").hasClass("small")){
+					$(".wrap").removeClass("small").addClass("big");
+					var image=$(this).css("backgroundImage");
+					$(".wrap>div").each(function(index,element){
+						// 计算行索引
+						var rowIndex=parseInt(index/6);
+						// 计算列索引
+						var colIndex=index%6;
+						// 计算大图距左距离
+						var _left=($(".wrap").width()-6*125)/2;
+						// 计算大图距顶的距离
+						var _top=($(".wrap").height()-4*125)/2;
+
+						$(element).css({
+							"backgroundImage":image,
+							"transform":"scale(1)",
+							"box-shadow":"0 0 0 0",
+							"background-size":"",
+							"background-position":"-"+(colIndex*125)+"px -"+rowIndex*125+"px"
+						});
+						setTimeout(function(){
+							$(element).css({
+								"left":(_left+colIndex*125)+"px",
+								"top":(_top+rowIndex*125)+"px"
+							});
+						},1000);
+					});
+				}else{
+					$(".wrap").removeClass("big").addClass("small");
+					$(".wrap>div").each(function(index,element){
+						var _deg=Math.random()*30-15;
+						$(element).css({
+                            "background":"url('../static/photo/img/huge/"+(index+1)+".jpg') ",
+							"background-size":"100% 100%",
+							"transform":"scale(0.9) rotate("+_deg+"deg)"
+						});
+					});
+					initPosition();
+				}
+			});
+
+
+			function initPosition(){
+				// 计算 每一列的 空隙
+				var colspan=($(".wrap").width()-125*6)/5;
+				// 计算 每一行的 空隙
+				var rowspan=($(".wrap").height()-125*4)/3;
+				$(".wrap>div").each(function(index,element){
+					// 计算行索引
+					var rowIndex=parseInt(index/6);
+					// 计算列索引
+					var colIndex=index%6;
+					// 计算图片距左的距离  列索引*(图片宽度+列缝隙)
+					var _left=colIndex*(125+colspan);
+					// 计算图片距顶的距离   行索引*(图片的高度+行缝隙)
+					var _top=rowIndex*(125+rowspan);
+					// 设置元素的样式
+					$(element).css({
+						"top":_top+"px",
+						"left":_left+"px"
+					});
+				});
+			}
+
+			function initImg(){
+				for(var i=1;i<=24;i++){
+					//创建div 对象
+					var $img= $("<div></div>");
+					// + - 15度 旋转
+					var _deg=Math.random()*30-15
+
+					// 计算图片
+					$img.css({
+                        "background":"url('../static/photo/img/huge/"+i+".jpg')",
+						"background-size":"100% 100%",
+						"transform":"scale(0.9) rotate("+_deg+"deg)"
+					});
+					$(".wrap").append($img);
+				}
+			}
+		});
+	</script>
+ </body>
+</html>

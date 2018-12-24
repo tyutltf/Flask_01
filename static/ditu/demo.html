@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jQuery中国地图城市标注详情代码</title>
+
+		<link href="css/map.css" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	</head>
+
+	<body>
+
+		<div class="contents" style="width:1100px; margin:0 auto;">
+			<div class="b_map">
+				<ul id="m_btn" class="e_map_tags">
+					<li class="m_beijing centers" data-type="chengdu">chengdu</li>
+					<li class="m_shanghai" data-type="shanghai">shangahi</li>
+					<li class="m_hangzhou" data-type="hangzhou">guangzhou</li>
+				</ul>
+				<div class="e_map_info">
+					<div class="m_content m_beijing hide" data-panel="beijing" style="display:block;">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">chengdu</p>
+						<div><img src="img/chengdu.jpg" /></div>
+						<p style="text-align:justify; width:270px;">Chengdu is the Chengdu is the capital of Sichuan and a major city in western China. It is one of the most important economic, transportation, and communication centers in western China...Chengdu is the capital of Sichuan and a major city in western China. It is one of the </p>
+					</div>
+
+					<div class="m_content m_shanghai hide" data-panel="shanghai">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">Shanghai</p>
+						<div><img src="img/shanghai.jpg" /></div>
+						<p style="text-align:justify; width:270px;">Chengdu is the Chengdu is the capital of Sichuan and a major city in western China. It is one of the most important economic, transportation, and communication centers in western China...Chengdu is the capital of Sichuan and a major city in western China. It is one of the </p>
+					</div>
+
+					<div class="m_content m_hangzhou hide" data-panel="hangzhou">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">Guangzhou</p>
+						<div><img src="img/guangzhou.jpg" /></div>
+						<p style="text-align:justify; width:270px;">Chengdu is the Chengdu is the capital of Sichuan and a major city in western China. It is one of the most important economic, transportation, and communication centers in western China...Chengdu is the capital of Sichuan and a major city in western China. It is one of the </p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$(".e_map_tags li").mouseover(function() {
+					$(this).addClass("centers").siblings("li").removeClass("centers");
+					var index = $(this).index();
+					$(".m_content").eq(index).show().siblings(".m_content").hide();
+				});
+				//左右切换
+				//点击左箭头
+				$(".m_left").click(function() {
+					//获取当前左切换 父亲的 index
+					var sideindexL = $(this).parents(".m_content").index();
+					//全部隐藏
+					$(".m_content").hide();
+					//父亲的上一个显示
+					$(this).parents(".m_content").prev(".m_content").fadeIn();
+					//地图对应index添加默认样式
+					$(".e_map_tags li").eq(sideindexL - 1).addClass("centers").siblings("li").removeClass("centers");
+					//当左切换为第一个时候  第一个显示
+					if(sideindexL == 0) {
+						$(".m_content:first").show();
+						alert("前面没有了！")
+						$(".e_map_tags li").eq(0).addClass("centers").siblings("li").removeClass("centers");
+					}
+				});
+
+				//点击右箭头
+				$(".m_right").click(function() {
+					//获取页面全部.m_content 的数量
+					var sideindexR = $(this).parents(".m_content").index();
+					$(".m_content").hide();
+					$(this).parents(".m_content").next(".m_content").fadeIn();
+					$(".e_map_tags li").eq(sideindexR + 1).addClass("centers").siblings("li").removeClass("centers");
+					if(sideindexR == 2) { //这里的数字 是你地图的个数减去1
+						$(".m_content:last").show();
+						alert("最后一个了！")
+						$(".e_map_tags li").eq(sidelenAll).addClass("centers").siblings("li").removeClass("centers");
+					}
+				});
+
+			});
+		</script>
+		
+
+	</body>
+
+</html>

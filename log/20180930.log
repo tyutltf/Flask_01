@@ -1,0 +1,2 @@
+2018-09-30 09:41:34,625 - mainlogger - ERROR - 执行SQL：select * from t_job where jobcompany=%s params：
+2018-09-30 09:41:34,625 - mainlogger - ERROR - 执行SQL：select * from t_job where jobcompany=%s 出现异常，params:execute() first

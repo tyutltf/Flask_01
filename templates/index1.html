@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>登录界面优化</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="../static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/reset.css"/>
+  <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+  <script type="text/javascript">
+        function login_submit(){
+            userName = document.loginForm.userName.value
+            userPwd  = document.loginForm.userPwd.value
+
+            if(userName == "" || userPwd == ""){
+                msg = document.getElementById("message")
+                msg.innerHTML = "用户名和密码都不能为空"
+                return false
+            }
+            return true
+        }
+    </script>
+</head>
+<body>
+
+{{ message }} <!-- jinja2模板语言 -->
+<span id="message" style="color: red;"></span>
+
+<form method="post" action="/login" name="loginForm" onsubmit="return login_submit();">
+    <div id="particles-js">
+		<div class="login">
+			<div class="login-top">
+				登录界面
+			</div>
+			<div class="login-center clearfix">
+				<div class="login-center-img"><img src="../static/img/name.png"/></div>
+				<div class="login-center-input">
+					<label for="exampleInputFile"></label>
+                    <input type="text" class="form-control" id="exampleInputFile" name="userName" placeholder="用户名">
+				</div>
+			</div>
+			<div class="login-center clearfix">
+				<div class="login-center-img"><img src="../static/img/password.png"/></div>
+				<div class="login-center-input">
+					<label for="exampleInputPassword1"></label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="userPwd" placeholder="密码">
+				</div>
+			</div>
+{#            <div class="login-button"><button type="submit">登录</button></div>#}
+            <button type="submit" class="login-button">登录</button>
+
+            <a href="/goregister" ><div class="login-button">
+				注册
+            </div></a>
+		</div>
+		<div class="sk-rotating-plane"></div>
+    </div>
+</form>
+
+
+<!-- scripts -->
+<script src="../static/js/particles.min.js"></script>
+<script src="../static/js/app.js"></script>
+<script type="text/javascript">
+	function hasClass(elem, cls) {
+	  cls = cls || '';
+	  if (cls.replace(/\s/g, '').length == 0) return false; //当cls没有参数时，返回false
+	  return new RegExp(' ' + cls + ' ').test(' ' + elem.className + ' ');
+	}
+
+	function addClass(ele, cls) {
+	  if (!hasClass(ele, cls)) {
+	    ele.className = ele.className == '' ? cls : ele.className + ' ' + cls;
+	  }
+	}
+
+	function removeClass(ele, cls) {
+	  if (hasClass(ele, cls)) {
+	    var newClass = ' ' + ele.className.replace(/[\t\r\n]/g, '') + ' ';
+	    while (newClass.indexOf(' ' + cls + ' ') >= 0) {
+	      newClass = newClass.replace(' ' + cls + ' ', ' ');
+	    }
+	    ele.className = newClass.replace(/^\s+|\s+$/g, '');
+	  }
+	}
+		document.querySelector(".login-button").onclick = function(){
+				addClass(document.querySelector(".login"), "active")
+				setTimeout(function(){
+					addClass(document.querySelector(".sk-rotating-plane"), "active")
+					document.querySelector(".login").style.display = "none"
+				},800)
+				setTimeout(function(){
+					removeClass(document.querySelector(".login"), "active")
+					removeClass(document.querySelector(".sk-rotating-plane"), "active")
+					document.querySelector(".login").style.display = "block"
+					alert("登录成功")
+
+				},5000)
+		}
+</script>
+</body>
+</html>

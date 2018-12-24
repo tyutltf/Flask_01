@@ -1,0 +1,67 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>非常炫酷的jQuery图片文字动画切换特效</title>
+
+		<link rel="stylesheet" href="css/YlSidler.css">
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.Yl.Slide.min.js"></script>
+		<script>
+			$(function() {
+				$('.Yl-container').YlSlide({
+					wrapper: '.Yl-wrapper',
+					slideClass: '.Yl-slide',
+					stylePrefix: '.Yl-',
+					slideLength: 3,
+					pages: true,
+					pagination: '.Yl-pagination',
+					pagingSelect: '.Yl-pagination-bullet-active',
+					autoplay: 25000,
+					imgTemplate: {
+						0: ['<div class="Yl-img0"></div>'],
+						1: ['<div class="Yl-img1"></div>'],
+						2: ['<div class="Yl-img2"></div>']
+					},
+					fontTemplate: {
+						0: ['<div class="Yl-font0">一人之下</div>', '<div class="Yl-font1">术之尽头，炁体源流</div>', '<div class="Yl-font2">国漫崛起</div>'],
+						1: ['<div class="Yl-font0">画江湖</div>', '<div class="Yl-font1">不良人、侠岚、换世门生、灵主</div>', '<div class="Yl-font2">国漫崛起</div>'],
+						2: ['<div class="Yl-font0">镇魂街</div>', '<div class="Yl-font1">末将于禁 愿为曹家世代赴汤蹈火</div>', '<div class="Yl-font2">国漫崛起</div>']
+					},
+					fontAnimationMode: {
+						0: ['fadeInUp', 'fadeInUp', 'slideInLeft'],
+						1: ['fadeInUp', 'fadeInUp', 'slideInLeft'],
+						2: ['fadeInUp', 'fadeInUp', 'slideInLeft']
+					},
+					customTemplate: {
+						0: ['<div class="Yl-Button"><a href="javascript:void(0);">查看详情</a></div>'],
+						1: ['<div class="Yl-Button"><a href="javascript:void(0);">查看详情</a></div>'],
+						2: ['<div class="Yl-Button"><a href="javascript:void(0);">查看详情</a></div>']
+					},
+					callback: function(e) {
+						//整个dom加载完成后的回调函数、切换动画前的回调						
+					},
+					before: function(e) {
+						//页面切换前的回调函数
+					},
+					after: function(e) {
+						//页面切换完成后的回调函数
+
+					}
+				});
+			});
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="sun_banner">
+			<div class="Yl-container"></div>
+		</div>
+
+	</body>
+
+</html>

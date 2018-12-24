@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts示例</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="../static/js/echarts.js"></script>
+</head>
+<body>
+    <h3>welcome, {{ session.get("userName") }} 访问
+    {{ message }}</h3>
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><a href="/">主界面</a></li>
+      <li role="presentation"><a href="/gojob">工作</a></li>
+      <li role="presentation"><a href="/gomovie">影评</a></li>
+      <li role="presentation"><a href="/gophoto">图片</a></li>
+      <li role="presentation"><a href="/gopic">随机图片</a></li>
+      <li role="presentation"><a href="/goechart">ECharts展示</a></li>
+        <li role="presentation"><a href="/gomap">地图展示</a></li>
+        <li role="presentation"><a href="/gorealdata">数据分析</a></li>
+        <li role="presentation"><a href="/zaxiang">杂项</a></li>
+    </ul>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            color:['red', 'green','yellow','blue', 'pink','orange'],
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['red', 'green','yellow','blue', 'pink','orange','black'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }],
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    <div id="chartmain" style="width:600px; height: 400px;margin-left: 600px;margin-top: -400px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'ECharts 数据统计'
+            },
+            tooltip:{},
+            legend:{
+                data:['用户来源']
+            },
+            xAxis:{
+                data:["Android","IOS","PC","Ohter"]
+            },
+            yAxis:{
+
+            },
+            series:[{
+                name:'访问量',
+                type:'bar',
+                data:[500,200,360,100],
+                itemStyle: {
+                //通常情况下：
+                normal:{
+　　　　　　　　　　　　//每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                    color: function (params){
+                        var colorList = ['red', 'green','yellow','blue', 'pink','orange','black'];
+                        return colorList[params.dataIndex];
+                        }
+                    },
+                }
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('chartmain'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="echartmain" style="width:600px; height: 400px;"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'ECharts 数据统计'
+            },
+            series:[{
+                name:'访问量',
+                type:'pie',
+                radius:'60%',
+                data:[
+                    {value:500,name:'Android'},
+                    {value:200,name:'IOS'},
+                    {value:360,name:'PC'},
+                    {value:100,name:'Ohter'}
+                ]
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echartmain'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="echartmain1" style="width:600px; height: 400px;margin-left: 600px;margin-top: -400px"></div>
+    <script type="text/javascript">
+        //指定图标的配置和数据
+        var option = {
+            title:{
+                text:'寝室活动'
+            },
+            series:[{
+                name:'活动类型',
+                type:'pie',
+                radius:'60%',
+                data:[
+                    {value:500,name:'刷抖音'},
+                    {value:200,name:'听音乐'},
+                    {value:360,name:'睡觉'},
+                    {value:400,name:'打游戏'}
+                ]
+            }]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echartmain1'));
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="yibiaopan" style="width:1200px; height: 400px;"></div>
+    <script type="text/javascript">
+         //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('yibiaopan'));
+        option = {
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : ['周一','周二','周三','周四','周五','周六','周日']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'邮件营销',
+                    type:'line',
+                    stack: '总量',
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'联盟广告',
+                    type:'line',
+                    stack: '总量',
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name:'视频广告',
+                    type:'line',
+                    stack: '总量',
+                    data:[150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name:'直接访问',
+                    type:'line',
+                    stack: '总量',
+                    data:[320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name:'搜索引擎',
+                    type:'line',
+                    stack: '总量',
+                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="liulanqi" style="width:1200px; height: 400px;"></div>
+    <script type="text/javascript">
+        var labelTop = {
+            normal : {
+                label : {
+                    show : true,
+                    position : 'center',
+                    formatter : '{b}',
+                    textStyle: {
+                        baseline : 'bottom'
+                    }
+                },
+                labelLine : {
+                    show : false
+                }
+            }
+        };
+        var labelFromatter = {
+            normal : {
+                label : {
+                    formatter : function (params){
+                        return 100 - params.value + '%'
+                    },
+                    textStyle: {
+                        baseline : 'top'
+                    }
+                }
+            },
+        }
+        var labelBottom = {
+            normal : {
+                color: '#ccc',
+                label : {
+                    show : true,
+                    position : 'center'
+                },
+                labelLine : {
+                    show : false
+                }
+            },
+            emphasis: {
+                color: 'rgba(0,0,0,0)'
+            }
+        };
+        var radius = [40, 55];
+        option = {
+            legend: {
+                x : 'center',
+                y : 'center',
+                data:[
+                    'GoogleMaps','Facebook','Youtube','Google+','Weixin',
+                    'Twitter', 'Skype', 'Messenger', 'Whatsapp', 'Instagram'
+                ]
+            },
+            title : {
+                text: 'The App World',
+                subtext: 'from global web index',
+                x: 'center'
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            funnel: {
+                                width: '20%',
+                                height: '30%',
+                                itemStyle : {
+                                    normal : {
+                                        label : {
+                                            formatter : function (params){
+                                                return 'other\n' + params.value + '%\n'
+                                            },
+                                            textStyle: {
+                                                baseline : 'middle'
+                                            }
+                                        }
+                                    },
+                                }
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            series : [
+                {
+                    type : 'pie',
+                    center : ['10%', '30%'],
+                    radius : radius,
+                    x: '0%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:46, itemStyle : labelBottom},
+                        {name:'GoogleMaps', value:54,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['30%', '30%'],
+                    radius : radius,
+                    x:'20%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:56, itemStyle : labelBottom},
+                        {name:'Facebook', value:44,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['50%', '30%'],
+                    radius : radius,
+                    x:'40%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:65, itemStyle : labelBottom},
+                        {name:'Youtube', value:35,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['70%', '30%'],
+                    radius : radius,
+                    x:'60%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:70, itemStyle : labelBottom},
+                        {name:'Google+', value:30,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['90%', '30%'],
+                    radius : radius,
+                    x:'80%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:73, itemStyle : labelBottom},
+                        {name:'Weixin', value:27,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['10%', '70%'],
+                    radius : radius,
+                    y: '55%',   // for funnel
+                    x: '0%',    // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:78, itemStyle : labelBottom},
+                        {name:'Twitter', value:22,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['30%', '70%'],
+                    radius : radius,
+                    y: '55%',   // for funnel
+                    x:'20%',    // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:78, itemStyle : labelBottom},
+                        {name:'Skype', value:22,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['50%', '70%'],
+                    radius : radius,
+                    y: '55%',   // for funnel
+                    x:'40%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:78, itemStyle : labelBottom},
+                        {name:'Messenger', value:22,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['70%', '70%'],
+                    radius : radius,
+                    y: '55%',   // for funnel
+                    x:'60%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:83, itemStyle : labelBottom},
+                        {name:'Whatsapp', value:17,itemStyle : labelTop}
+                    ]
+                },
+                {
+                    type : 'pie',
+                    center : ['90%', '70%'],
+                    radius : radius,
+                    y: '55%',   // for funnel
+                    x:'80%', // for funnel
+                    itemStyle : labelFromatter,
+                    data : [
+                        {name:'other', value:89, itemStyle : labelBottom},
+                        {name:'Instagram', value:11,itemStyle : labelTop}
+                    ]
+                }
+            ]
+        };
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('liulanqi'));
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+    <div id="loudou" style="width:1200px; height: 400px;"></div>
+    <script type="text/javascript">
+        option = {
+            title : {
+                text: '漏斗图(对比)',
+                subtext: '纯属虚构',
+                x: 'left',
+                y: 'bottom'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                show : true,
+                orient: 'vertical',
+                y: 'center',
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true,
+                        type: ['pie', 'funnel'],
+                        option: {
+                            pie: {
+                                radius : [0, 50]
+                            }
+                        }
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            legend: {
+                orient: 'vertical',
+                x: 'left',
+                data : ['产品A','产品B','产品C','产品D','产品E']
+            },
+            calculable : true,
+            series : [
+                {
+                    name:'漏斗图',
+                    type:'funnel',
+                    width: '40%',
+                    height: '45%',
+                    x:'5%',
+                    y:'50%',
+                    funnelAlign: 'right',
+
+                    center: ['25%', '25%'],  // for pie
+
+                    data:[
+                        {value:60, name:'产品C'},
+                        {value:30, name:'产品D'},
+                        {value:10, name:'产品E'},
+                        {value:80, name:'产品B'},
+                        {value:100, name:'产品A'}
+                    ]
+                },
+                {
+                    name:'金字塔',
+                    type:'funnel',
+                    width: '40%',
+                    height: '45%',
+                    x: '5%',
+                    y: '5%',
+                    sort : 'ascending',
+                    funnelAlign: 'right',
+
+                    center: ['25%', '75%'],  // for pie
+
+                    data:[
+                        {value:60, name:'产品C'},
+                        {value:30, name:'产品D'},
+                        {value:10, name:'产品E'},
+                        {value:80, name:'产品B'},
+                        {value:100, name:'产品A'}
+                    ]
+                },
+                {
+                    name:'漏斗图',
+                    type:'funnel',
+                    width: '40%',
+                    height: '45%',
+                    x:'55%',
+                    y: '5%',
+                    funnelAlign: 'left',
+
+                    center: ['75%', '25%'],  // for pie
+
+                    data:[
+                        {value:60, name:'产品C'},
+                        {value:30, name:'产品D'},
+                        {value:10, name:'产品E'},
+                        {value:80, name:'产品B'},
+                        {value:100, name:'产品A'}
+                    ]
+                },
+                {
+                    name:'金字塔',
+                    type:'funnel',
+                    width: '40%',
+                    height: '45%',
+                    x:'55%',
+                    y:'50%',
+                    sort : 'ascending',
+                    funnelAlign: 'left',
+
+                    center: ['75%', '75%'],  // for pie
+
+                    data:[
+                        {value:60, name:'产品C'},
+                        {value:30, name:'产品D'},
+                        {value:10, name:'产品E'},
+                        {value:80, name:'产品B'},
+                        {value:100, name:'产品A'}
+                    ]
+                }
+            ]
+        };
+
+        //初始化echarts实例
+        var myChart = echarts.init(document.getElementById('loudou'));
+        //使用制定的配置项和数据显示图表
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

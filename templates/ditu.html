@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>中国地图</title>
+    <link href="../static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="../static/ditu/css/map.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="../static/ditu/js/jquery.min.js"></script>
+</head>
+<body>
+    <h3>welcome, {{ session.get("userName") }} 访问
+    {{ message }}</h3>
+
+    <ul class="nav nav-tabs">
+      <li role="presentation"><a href="/" style="font-size: 14px;">主界面</a></li>
+      <li role="presentation"><a href="/zaxiang" style="font-size: 14px;">杂项</a></li>
+      <li role="presentation"><a href="/tupianlunbo" style="font-size: 14px;">轮播</a></li>
+      <li role="presentation"><a href="/zhuanpan" style="font-size: 14px;">转盘</a></li>
+      <li role="presentation"><a href="/ditu" style="font-size: 14px;">地图</a></li>
+      <li role="presentation"><a href="/biaobai" style="font-size: 14px;">表白</a></li>
+    </ul>
+
+    <div class="contents" style="width:1100px; margin:0 auto;">
+			<div class="b_map">
+				<ul id="m_btn" class="e_map_tags">
+					<li class="m_chengdu" data-type="chengdu">成都</li>
+					<li class="m_shanghai" data-type="shanghai">上海</li>
+					<li class="m_guangzhou" data-type="guangzhou">广州</li>
+                    <li class="m_beijing" data-type="beijing">北京</li>
+                    <li class="m_xian" data-type="xian">西安</li>
+                    <li class="m_xianggang" data-type="xianggang">香港</li>
+				</ul>
+
+				<div class="e_map_info">
+					<div class="m_content m_chengdu centers" data-panel="chengdu" style="display:block;">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="../static/ditu/img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="../static/ditu/img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">成都</p>
+						<div><img src="../static/ditu/img/chengdu.jpg" /></div>
+						<p style="text-align:justify; width:270px;">成都（Chengdu），简称蓉，是四川省省会，1993年被国务院确定为西南地区的科技、商贸、金融中心和交通、通讯枢纽，是设立外国领事馆数量最多、开通国际航线数量最多的中西部城市 。2015年由国务院批复并升格为国家重要的高新技术产业基地、商贸物流中心和综合交通枢纽，西部地区重要的中心城市 。</p>
+					</div>
+
+					<div class="m_content m_shanghai" data-panel="shanghai">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="../static/ditu/img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="../static/ditu/img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">上海</p>
+						<div><img src="../static/ditu/img/shanghai.jpg" /></div>
+						<p style="text-align:justify; width:270px;">上海，简称“沪”或“申”，是中国共产党的诞生地。中华人民共和国直辖市，国家中心城市，超大城市，中国的经济、交通、科技、工业、金融、贸易、会展和航运中心，首批沿海开放城市。上海地处长江入海口，是长江经济带的龙头城市，隔东中国海与日本九州岛相望，南濒杭州湾，北、西与江苏、浙江两省相接</p>
+					</div>
+
+                    <div class="m_content m_guangzhou " data-panel="guangzhou">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="../static/ditu/img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="../static/ditu/img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">广州</p>
+						<div><img src="../static/ditu/img/guangzhou.jpg" /></div>
+						<p style="text-align:justify; width:270px;">广州是广东省省会、国家中心城市、超大城市、南部战区司令部驻地。是国务院定位的国际大都市、国际商贸中心、国际综合交通枢纽、国家综合性门户城市、国家历史文化名城。从秦朝开始，广州一直是华南地区的政治、军事、经济、文化和科教中心。广州从3世纪30年代起成为海上丝绸之路的主港，唐宋时期成为中国第一大港，明清两代成为中国唯一的对外贸易大港。</p>
+					</div>
+
+                    <div class="m_content m_beijing " data-panel="beijing">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="../static/ditu/img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="../static/ditu/img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">北京</p>
+						<div><img src="../static/ditu/img/beijing.jpg" style="width: 270px;height: 173px;" /></div>
+						<p style="text-align:justify; width:270px;">北京（Beijing），简称京，中华人民共和国首都、直辖市、国家中心城市、超大城市，全国政治中心、文化中心、国际交往中心、科技创新中心，是中国共产党中央委员会、中华人民共和国中央人民政府和全国人民代表大会的办公所在地。</p>
+					</div>
+
+                    <div class="m_content m_xian " data-panel="xian">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="../static/ditu/img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="../static/ditu/img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">西安</p>
+						<div><img src="../static/ditu/img/xian.jpg" style="width: 270px;height: 173px;" /></div>
+						<p style="text-align:justify; width:270px;">西安，古称长安、镐京，现为陕西省省会、副省级市、是国务院批复确定的中国西部地区重要的中心城市，国家重要的科研、教育和工业基地 。西安是中国四大古都之一，联合国科教文组织1981年确定的“世界历史名城”，美媒评选的世界十大古都之一</p>
+					</div>
+
+                    <div class="m_content m_xianggang " data-panel="xianggang">
+						<div class="m_content_side">
+							<a href="javascript:;" class="m_left"><img src="../static/ditu/img/arraw-left.png" /></a>
+							<a href="javascript:;" class="m_right"><img src="../static/ditu/img/arraw-right.png" /></a>
+						</div>
+						<p style="text-align:center; font-size:20px; padding-bottom:20px;">香港</p>
+						<div><img src="../static/ditu/img/xianggang.jpg" style="width: 270px;height: 173px;" /></div>
+						<p style="text-align:justify; width:270px;">香港（粤语：hoeng1 gong2；英文：Hong Kong；普通话：xiāng gǎng；缩写：HK），简称“港”，全称为中华人民共和国香港特别行政区（HKSAR）。香港地处中国华南，珠江口以东，南海沿岸，北接广东省深圳市、西接珠江，与澳门特别行政区隔着珠江口相望，其余两面与南海邻接。</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				$(".e_map_tags li").mouseover(function() {
+					$(this).addClass("centers").siblings("li").removeClass("centers");
+					var index = $(this).index();
+					$(".m_content").eq(index).show().siblings(".m_content").hide();
+				});
+				//左右切换
+				//点击左箭头
+				$(".m_left").click(function() {
+					//获取当前左切换 父亲的 index
+					var sideindexL = $(this).parents(".m_content").index();
+					//全部隐藏
+					$(".m_content").hide();
+					//父亲的上一个显示
+					$(this).parents(".m_content").prev(".m_content").fadeIn();
+					//地图对应index添加默认样式
+					$(".e_map_tags li").eq(sideindexL - 1).addClass("centers").siblings("li").removeClass("centers");
+					//当左切换为第一个时候  第一个显示
+					if(sideindexL == 0) {
+						$(".m_content:first").show();
+						alert("前面没有了！")
+						$(".e_map_tags li").eq(0).addClass("centers").siblings("li").removeClass("centers");
+					}
+				});
+
+				//点击右箭头
+				$(".m_right").click(function() {
+					//获取页面全部.m_content 的数量
+					var sideindexR = $(this).parents(".m_content").index();
+					$(".m_content").hide();
+					$(this).parents(".m_content").next(".m_content").fadeIn();
+					$(".e_map_tags li").eq(sideindexR + 1).addClass("centers").siblings("li").removeClass("centers");
+					if(sideindexR == 5) { //这里的数字 是你地图的个数减去1
+						$(".m_content:last").show();
+						alert("最后一个了！")
+						$(".e_map_tags li").eq(sidelenAll).addClass("centers").siblings("li").removeClass("centers");
+					}
+				});
+
+			});
+		</script>
+
+</body>
+</html>
